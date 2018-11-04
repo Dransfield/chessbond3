@@ -1960,6 +1960,7 @@ function setupStatsPage()
 
 function setupForgotPage()
 {
+	console.log("this is forgot page");
 	console.log("drawnPageOnce "+drawnPageOnce);
 	AccountsToRetrieve[MyID]=MyID;
 	renderForgotPage();
