@@ -1,0 +1,12 @@
+
+    <div ng-init="getpics()">
+	</div>
+
+	<table>
+	<tr ng-repeat="pic in mypics track by $index">
+	<td>
+	<img style="width:400px" ng-src="/user/avatar/{{pic.id}}">
+	<button ng-click="LoadImg($index)" type="submit" class="btn btn-lg btn-success">DL</button>
+	</td>
+	</tr>
+	</table>

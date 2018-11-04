@@ -1,0 +1,24 @@
+
+      
+
+      
+    <% if (req.session.passport) { %>
+			<% if (req.session.passport.user) { %>
+			<script>var MyID='<%- req.session.passport.user %>'</script>
+			<% }else{ %>
+			<script>var MyID=''</script>
+	
+			<%}%>
+			<% }else{ %>
+			<script>var MyID=''</script>
+			<%}%>
+
+    
+ 
+     
+      <script> var GameID='<%- req.param('ID') %>'</script>
+      <div id="navbar"></div>
+       <div id="playervsplayer"></div>
+		<div id="underboard"></div>
+
+ 
