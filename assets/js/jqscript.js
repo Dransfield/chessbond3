@@ -1969,7 +1969,7 @@ function setupForgotPage()
 
 function renderForgotPage()
 {
-	$("#adminpage").append("<h1>Forgot Password</h1>");
+	$("#forgotpage").append("<h1>Forgot Password</h1>");
 	
 }
 
