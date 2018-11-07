@@ -37,7 +37,7 @@ module.exports = {
 		var nodemailer = require('nodemailer');
 		// create reusable transporter object using the default SMTP transport
 //		var transporter = nodemailer.createTransport('smtps://slenkar@gmail.com:mouthwash78@smtp.gmail.com');
-		
+	/*	
 		var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -45,6 +45,7 @@ module.exports = {
     pass: 'mouthwash78'
   }
 });
+*/
 
 	 var code=md5(Date.now()+user.id);
     
@@ -52,6 +53,18 @@ module.exports = {
     user.save();
     console.log("code "+code);
     var adrString="http://www.chessbond.com/forgot/password/"+code;
+  const sendmail = require('sendmail')();
+ 
+sendmail({
+    from: 'admin@chessbond.com',
+    to: "req.param('address') ",
+    subject: 'Forgotten Password',
+    html: '<h1>Chessbond</h1><br><a href='"+adrString+"'>Click Here to reset your password</a>',
+  }, function(err, reply) {
+    console.log(err && err.stack);
+    console.dir(reply);
+});
+    /*
 	var mailOptions = {
     from: '"Prakash" <admin@chessbond.com>', // sender address
     to: req.param('address'), // list of receivers
@@ -60,8 +73,9 @@ module.exports = {
     
     html: "<h1>Chessbond</h1><br><a href='"+adrString+"'>Click Here to reset your password</a>" // html body
 };
-
+*/
 // send mail with defined transport object
+/*
 transporter.sendMail(mailOptions, function(error, info){
     if(error){
         return console.log(error);
@@ -70,7 +84,7 @@ transporter.sendMail(mailOptions, function(error, info){
     {return res.ok();}
     console.log('Message sent: ' + info.response);
 	});
-	
+	*/
 	
 	}
 }
