@@ -18,6 +18,7 @@
     "node-schedule": "*",
 	 "ip2location-nodejs":"*",
 	"nodemailer":"*",
+	"sendmail":"*",
 	"passport": "*",
     "passport-facebook": "*",
     "passport-google-oauth20": "*",
