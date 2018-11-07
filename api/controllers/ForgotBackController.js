@@ -46,7 +46,7 @@ module.exports = {
   }
 });
 */
-
+console.log(JSON.stringify(user));
 	 var code=md5(Date.now()+user.id);
     
     user.passwordcode =code;
