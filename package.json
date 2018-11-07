@@ -17,7 +17,7 @@
    
     "node-schedule": "*",
 	 "ip2location-nodejs":"*",
-   
+	"nodemailer":"*",
 	"passport": "*",
     "passport-facebook": "*",
     "passport-google-oauth20": "*",
