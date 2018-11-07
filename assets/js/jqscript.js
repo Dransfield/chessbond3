@@ -1983,6 +1983,7 @@ function renderForgotPage()
 				console.log(data);
 		
 		});
+	});
 	
 	
 }
