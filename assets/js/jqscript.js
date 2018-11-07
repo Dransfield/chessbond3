@@ -1982,6 +1982,10 @@ function renderForgotPage()
 			function onSuccess (data,res){
 				console.log(data);
 				console.log(res);
+				if (res.statusCode==404)
+				{
+					toastr.error("User not found");
+					}
 		
 		});
 	});
