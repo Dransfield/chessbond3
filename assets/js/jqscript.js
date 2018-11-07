@@ -1969,7 +1969,21 @@ function setupForgotPage()
 
 function renderForgotPage()
 {
-	$("#forgotpage").append("<h1>Forgot Password</h1>");
+	$("#forgotpage").append("<h1>Chessbond</h1>");
+	$("#forgotpage").append("<h2>Forgot Password</h2>");
+	$("#forgotpage").append("<h3>Please enter your email associated with your account</h3>");
+	
+	var emailinp=showInput($("#forgotpage"));
+	var emailbutton=showButton($("#forgotpage"),"Submit");
+	
+	emailbutton.click(function(){
+		
+		io.socket.put("/SendMail",{email:emailinp.val()},
+			function onSuccess (data){
+				console.log(data);
+		
+		});
+	
 	
 }
 
