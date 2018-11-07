@@ -36,7 +36,16 @@ module.exports = {
 			{
 		var nodemailer = require('nodemailer');
 		// create reusable transporter object using the default SMTP transport
-		var transporter = nodemailer.createTransport('smtps://slenkar@gmail.com:mouthwash78@smtp.gmail.com');
+//		var transporter = nodemailer.createTransport('smtps://slenkar@gmail.com:mouthwash78@smtp.gmail.com');
+		
+		var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'slenkar@gmail.com',
+    pass: 'mouthwash78'
+  }
+});
+
 	 var code=md5(Date.now()+user.id);
     
     user.passwordcode =code;
