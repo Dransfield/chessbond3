@@ -31,7 +31,9 @@ module.exports = {
 	},function foundUser(err,user){
 		if (!err){
 			if(!user)
-			{return res.notFound();}
+			{
+				consolel.log("no user");
+				return res.notFound();}
 			else
 			{
 		//var nodemailer = require('nodemailer');
