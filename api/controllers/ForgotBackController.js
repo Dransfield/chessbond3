@@ -32,7 +32,7 @@ module.exports = {
 		if (!err){
 			if(!user)
 			{
-				consolel.log("no user");
+				console.log("no user");
 				return res.notFound();}
 			else
 			{

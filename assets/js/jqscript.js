@@ -1979,8 +1979,9 @@ function renderForgotPage()
 	emailbutton.click(function(){
 		
 		io.socket.put("/SendMail",{address:emailinp.val()},
-			function onSuccess (data){
+			function onSuccess (data,res){
 				console.log(data);
+				console.log(res);
 		
 		});
 	});
