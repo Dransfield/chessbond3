@@ -34,7 +34,7 @@ module.exports = {
 			{return res.notFound();}
 			else
 			{
-		var nodemailer = require('nodemailer');
+		//var nodemailer = require('nodemailer');
 		// create reusable transporter object using the default SMTP transport
 //		var transporter = nodemailer.createTransport('smtps://slenkar@gmail.com:mouthwash78@smtp.gmail.com');
 	/*	
@@ -57,7 +57,7 @@ module.exports = {
  
 sendmail({
     from: 'admin@chessbond.com',
-    to: "req.param('address') ",
+    to: req.param('address') ,
     subject: 'Forgotten Password',
     html: "<h1>Chessbond</h1><br><a href='"+adrString+"'>Click Here to reset your password</a>",
   }, function(err, reply) {
