@@ -32,6 +32,8 @@ module.exports = {
 		if (!err){
 			if(!user)
 			{return res.notFound();}
+			else
+			{
 		var nodemailer = require('nodemailer');
 		// create reusable transporter object using the default SMTP transport
 		var transporter = nodemailer.createTransport('smtps://slenkar@gmail.com:mouthwash78@smtp.gmail.com');
@@ -62,6 +64,7 @@ transporter.sendMail(mailOptions, function(error, info){
 	
 	
 	}
+}
 });
 }
 };
