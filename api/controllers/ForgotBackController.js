@@ -54,7 +54,7 @@ console.log(JSON.stringify(user));
     console.log("code "+code);
     var adrString="http://www.chessbond.com/forgot/password/"+code;
   const sendmail = require('sendmail')();
- 
+ console.log(req.param('address'));
 sendmail({
     from: 'admin@chessbond.com',
     to: req.param('address') ,
