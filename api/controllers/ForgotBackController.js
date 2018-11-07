@@ -59,7 +59,7 @@ sendmail({
     from: 'admin@chessbond.com',
     to: "req.param('address') ",
     subject: 'Forgotten Password',
-    html: '<h1>Chessbond</h1><br><a href='"+adrString+"'>Click Here to reset your password</a>',
+    html: "<h1>Chessbond</h1><br><a href='"+adrString+"'>Click Here to reset your password</a>",
   }, function(err, reply) {
     console.log(err && err.stack);
     console.dir(reply);
