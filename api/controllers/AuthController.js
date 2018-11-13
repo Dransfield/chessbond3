@@ -133,7 +133,7 @@ register: function (req, res) {
             console.log(req.session);
             console.log( JSON.stringify(req.session));
             
-            
+            req.session.passport={};
            req.session.passport.user=user.id;
            // req.logIn(user, function(err) {
                // if (err) res.send(err);
