@@ -1988,7 +1988,7 @@ function renderRegisterPage()
 	
 	subButton.click(function(){
 		
-		io.socket.put("/register",{name:usernameInp.val(),email:emailInp.val(),password:passwordInp.val()},
+		io.socket.post("/register",{name:usernameInp.val(),email:emailInp.val(),password:passwordInp.val()},
 			function onSuccess (data,res){
 				console.log(data);
 				console.log(res);
