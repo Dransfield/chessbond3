@@ -1990,6 +1990,7 @@ function renderRegisterPage()
 		
 		io.socket.post("/register",{name:usernameInp.val(),email:emailInp.val(),password:passwordInp.val()},
 			function onSuccess (data,res){
+				console.log("username entered:"+usernameInp.val());
 				console.log(data);
 				console.log(res);
 				if (res.statusCode==404)
