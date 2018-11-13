@@ -9,6 +9,8 @@ md5=require("MD5");
 
 module.exports = {
 	 attributes: {
+		 email:(type: 'string' , unique:true},
+		 name:(type: 'string' , unique:true},
 ChessPieceTheme:{ type: 'string', unique: false,defaultsTo: 'A' },
 BoardTheme:{type:'string',unique:false,defaultsTo: "uscf"},
 Country:{ type: 'string', unique: false,defaultsTo: 'None'},
