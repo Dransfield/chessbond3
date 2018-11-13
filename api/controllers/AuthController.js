@@ -128,9 +128,13 @@ register: function (req, res) {
                     user: user
                 });
             }
-           console.log("user is "+user);
+           console.log("user is "+JSON.stringify(user));
             console.log(req.session.passport);
-            req.session.passport.user=user.id;
+            console.log(req.session);
+            console.log( JSON.stringify(req.session));
+            
+            
+           // req.session.passport.user=user.id;
            // req.logIn(user, function(err) {
                // if (err) res.send(err);
                // req.session.user=user;
