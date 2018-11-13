@@ -1958,10 +1958,54 @@ function setupStatsPage()
 	
 }
 
-function setupForgotPage()
+function setupRegisterPage()
 {
 	console.log("this is forgot page");
 	console.log("drawnPageOnce "+drawnPageOnce);
+	AccountsToRetrieve[MyID]=MyID;
+	renderRegisterPage();
+	
+}
+
+
+function renderRegisterPage()
+{
+	$("#registerpage").append("<h1>Chessbond</h1>");
+	$("#registerpage").append("<h2>Create New Account</h2>");
+	$("#registerpage").append("<h3>Email:</h3>");
+		
+	var emailInp=showInput($("#registerpage"));
+		$("#registerpage").append("<h3>Username:</h3>");
+		
+	var usernameInp=showInput($("#registerpage"));
+	$("#registerpage").append("<h3>Password:</h3>");
+		
+	var passwordInp=showInput($("#registerpage"));
+	var subButton=showButton($("#registerpage"),"Submit");
+	
+	subButton.click(function(){
+		
+		io.socket.put("/register",{name:usernameInp.val(),email:emailInp.val(),password:passwordInp.val()},
+			function onSuccess (data,res){
+				console.log(data);
+				console.log(res);
+				if (res.statusCode==404)
+				{
+					toastr.error("User not found");
+					}
+					if(data.username){toastr.success("Account Created");}
+		
+		});
+	});
+	
+	
+}
+
+
+function setupForgotPage()
+{
+//	console.log("this is forgot page");
+	//console.log("drawnPageOnce "+drawnPageOnce);
 	AccountsToRetrieve[MyID]=MyID;
 	renderForgotPage();
 	
