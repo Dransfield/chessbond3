@@ -3230,9 +3230,18 @@ function censor(wrds)
 	return newWords;
 }
 */
-function showInput(elem)
+function showInput(elem,noedit=false)
 {
-	var myinput=$("<span>Edit:</span><input type='text' autocomplete='off' class='form-control' placeholder='' name='name' >");
+	var myinput;
+	if (myinput==false)
+	{
+	myinput=$("<span>Edit:</span><input type='text' autocomplete='off' class='form-control' placeholder='' name='name' >");
+	}
+	else
+	{
+	myinput=$("<span></span><input type='text' autocomplete='off' class='form-control' placeholder='' name='name' >");
+		
+	}
 	elem.append(myinput);
 return myinput;
 }

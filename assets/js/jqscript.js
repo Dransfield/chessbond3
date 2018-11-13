@@ -1977,13 +1977,13 @@ function renderRegisterPage()
 	$("#registerpage").append("<h2>Create New Account</h2>");
 	$("#registerpage").append("<h3>Email:</h3>");
 		
-	var emailInp=showInput($("#registerpage"));
+	var emailInp=showInput($("#registerpage"),true);
 		$("#registerpage").append("<h3>Username:</h3>");
 		
-	var usernameInp=showInput($("#registerpage"));
+	var usernameInp=showInput($("#registerpage"),true);
 	$("#registerpage").append("<h3>Password:</h3>");
 		
-	var passwordInp=showInput($("#registerpage"));
+	var passwordInp=showInput($("#registerpage"),true);
 	var subButton=showButton($("#registerpage"),"Submit");
 	
 	subButton.click(function(){
