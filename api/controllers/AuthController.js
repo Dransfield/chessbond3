@@ -105,8 +105,9 @@ register: function (req, res) {
 	}
 	else
 	{
+	console.log(user1);
 	
-	if (user1.name==params.name)
+	if (user1.name.find(params.name)==0)
 		{return res.serverError("name exists");}
 		return res.serverError("general error");
 	}
