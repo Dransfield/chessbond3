@@ -1994,9 +1994,12 @@ function renderRegisterPage()
 				console.log(res);
 				if (res.statusCode==404)
 				{
-					toastr.error("User not found");
+					toastr.error("404 error");
+					console.log(JSON.stringify(res));
+					console.log(res);
+					console.log(data);
 					}
-					if(data.username){toastr.success("Account Created");}
+					if(data){toastr.success("Account Created");}
 		
 		});
 	});
