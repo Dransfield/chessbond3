@@ -93,7 +93,7 @@ register: function (req, res) {
     { email: params.email },
     
   ]}).exec(function(err1,user1){
-  if(!err){
+  if(!user1){
     User.create(params).exec(function(err, user) {
       if (err) {
         res.serverError(err);
