@@ -1999,7 +1999,7 @@ function renderRegisterPage()
 					console.log(res);
 					console.log(data);
 					}
-					if(data){toastr.success("Account Created");}
+					if (res.statusCode==200){toastr.success("Account Created");}
 		
 		});
 	});
