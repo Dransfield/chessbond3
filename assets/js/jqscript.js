@@ -1987,7 +1987,7 @@ function renderRegisterPage()
 	var subButton=showButton($("#registerpage"),"Submit");
 	
 	subButton.click(function(){
-		console.log(JSON.stringify(passwordInp));
+		console.log(JSON.stringify(usernameInp));
 		console.log("username entered:"+usernameInp.val());
 				
 		io.socket.post("/register",{name:usernameInp.val(),email:emailInp.val(),password:passwordInp.val()},

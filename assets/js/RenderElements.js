@@ -3230,7 +3230,7 @@ function censor(wrds)
 	return newWords;
 }
 */
-function showInput(elem,noedit=false)
+function showInput(elem,noedit=false,inputid=false)
 {
 	var myinput;
 	if (myinput==false)
@@ -3239,7 +3239,7 @@ function showInput(elem,noedit=false)
 	}
 	else
 	{
-	myinput=$("<span></span><input type='text' autocomplete='off' class='form-control' placeholder='' name='name' >");
+	myinput=$("<input type='text' autocomplete='off' class='form-control' placeholder='' name='name' >");
 		
 	}
 	elem.append(myinput);
