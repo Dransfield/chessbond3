@@ -84,7 +84,7 @@ passport.authenticate('facebook',{ scope : [ 'email'] })(req, res);
 	},
 register: function (req, res) {
     var params = {name: req.param('name'),email: req.param('email'), password: req.param('password')};
- 
+	console.log("TRIED TO REGISTER");
     User.create(params).exec(function(err, user) {
       if (err) {
         res.serverError(err);
