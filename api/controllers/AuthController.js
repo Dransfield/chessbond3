@@ -82,10 +82,18 @@ passport.authenticate('facebook',{ scope : [ 'email'] })(req, res);
             failureFlash: true
         })(req, res);;
 	},
+
 register: function (req, res) {
-    var params = {name: req.param('name'),email: req.param('email'), password: req.param('password')};
+	
+    var params = {name:req.param('name'),email:req.param('email'),password:req.param('password')};
 	console.log("TRIED TO REGISTER"+params.name);
 	console.log("name "+ req.param('name'));
+	User.find({ or : [
+    { name: params.name },
+    { email: params.email },
+    
+  ]}).exec(function(err1,user1){
+  if(!err){
     User.create(params).exec(function(err, user) {
       if (err) {
         res.serverError(err);
@@ -94,7 +102,16 @@ register: function (req, res) {
         res.send(user);
       }
     });
+	}
+	else
+	{
+	
+	if (user1.name==params.name)
+		{res.serverError("name exists");}
+	}
+	});
   },
+  
     login: function(req, res) {
 
         passport.authenticate('local', function(err, user, info) {
