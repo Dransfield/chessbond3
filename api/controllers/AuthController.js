@@ -107,7 +107,7 @@ register: function (req, res) {
 	{
 	
 	if (user1.name==params.name)
-		{res.serverError("name exists");}
+		{return res.serverError("name exists");}
 	}
 	});
   },
