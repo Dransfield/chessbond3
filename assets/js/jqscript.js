@@ -1995,12 +1995,10 @@ function renderRegisterPage()
 				console.log("username entered:"+usernameInp.val());
 				console.log(data);
 				console.log(res);
-				if (res.statusCode==404)
+				if (res.statusCode==500)
 				{
-					toastr.error("404 error");
-					console.log(JSON.stringify(res));
-					console.log(res);
-					console.log(data);
+					toastr.error(data);
+			
 					}
 					if (res.statusCode==200){toastr.success("Account Created");}
 		
