@@ -216,7 +216,10 @@ if(drawnPageOnce==false)
 		{
 		setupForgotPage();
 		}
-		
+		if($("#registerpage").length)
+		{
+		setupRegisterPage();
+		}
 		if($("#albumspage").length)
 		{
 		setupAlbumsPage();
