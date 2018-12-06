@@ -3286,7 +3286,7 @@ function showUsernameSearch(elem,resultDiv)
 						finally {
 						}
 					});
-				}
+				
 	
 }
 
