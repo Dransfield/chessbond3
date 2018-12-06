@@ -3878,7 +3878,7 @@ function addNotificationPromises()
 function getSearchedUsernames(typedQuery)
 {
 	
-		console.log("TypedCity "+TypedCity);
+		console.log("TypedCity "+typedQuery);
 	var cg = new Promise
 ((resolve, reject) => {
 io.socket.get("/user",{where:{'name':{'contains':typedQuery}}},
