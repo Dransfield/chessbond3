@@ -978,9 +978,7 @@ function setupProfilePage()
 										
 										var nameAndBookmark=addFlexDiv(leftcol,"nameAndBookmark","row","wrap");
 									
-										searchButton.click(function(){
-											console.log("clicked search");
-											})
+										
 										
 										
 										
