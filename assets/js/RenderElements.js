@@ -3266,7 +3266,7 @@ function showUsernameSearch(elem,resultDiv)
 									cityarr.push(values[myiter].city);
 									}
 										
-								resultSpan.empty();
+								resultDiv.empty();
 								var citysel=showSelect(resultDiv,cityarr,cityarr,"matched users")
 									citysel.change(function(){
 											
