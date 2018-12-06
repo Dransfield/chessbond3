@@ -973,10 +973,12 @@ function setupProfilePage()
 										var leftcol=addFlexDiv(leftright,"leftcol","column","wrap");
 										leftcol.css("width","50%");
 										
+											leftcol.append("Search for another user");
+										var searchInput=showInput(leftcol,true);
+										var searchButton=showButton(leftcol,"Search");
+										
 										var nameAndBookmark=addFlexDiv(leftcol,"nameAndBookmark","row","wrap");
-										nameAndBookmark.append("Search for another user");
-										var searchInput=showInput(nameAndBookmark,true);
-										var searchButton=showButton(nameAndBookmark,"Search");
+									
 										searchButton.click(function(){
 											console.log("clicked search");
 											})
