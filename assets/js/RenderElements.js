@@ -3233,7 +3233,7 @@ function censor(wrds)
 function showInput(elem,noedit=false,inputid=false)
 {
 	var myinput;
-	if (myinput==false)
+	if (noedit==false)
 	{
 	myinput=$("<span>Edit:</span><input type='text' autocomplete='off' class='form-control' placeholder='' name='name' >");
 	}

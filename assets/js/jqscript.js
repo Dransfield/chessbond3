@@ -10,7 +10,7 @@ var timeCells={};
 var joinedPlayersDiv;
 /*103.117.180.122
  server IP 103.117.180.122
-new server pass 8-C6[_+H2#A9@uQ
+new server pass Mouthwash78
 * Weblink: https://www.ewebguru.com/
 
 new window ctrl-b c
@@ -974,6 +974,15 @@ function setupProfilePage()
 										leftcol.css("width","50%");
 										
 										var nameAndBookmark=addFlexDiv(leftcol,"nameAndBookmark","row","wrap");
+										nameAndBookmark.append("Search for another user");
+										var searchInput=showInput(nameAndBookmark,true);
+										var searchButton=showButton(nameAndBookmark,"Search");
+										searchButton.click(function(){
+											console.log("clicked search");
+											})
+										
+										
+										
 										showUsernameJumbo(nameAndBookmark,ProfID);
 									//	nameAndBookmark.append("<img style='width:50px;height:50px;' src='/images/bookmrk.png'></img>");
 									//	nameAndBookmark.append("<img style='width:75px;height:75px;' src='/images/bookmrk.png'></img>");
