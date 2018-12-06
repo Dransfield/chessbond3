@@ -3263,14 +3263,14 @@ function showUsernameSearch(elem,resultDiv)
 								var cityarr=[];
 									for (myiter in values)
 									{
-									cityarr.push(values[myiter].city);
+									cityarr.push(values[myiter].name);
 									}
 										
 								resultDiv.empty();
 								var citysel=showSelect(resultDiv,cityarr,cityarr,"matched users")
 									citysel.change(function(){
 											
-									console.log(JSON.parse(citysel.val()));	
+									console.log(citysel.val());	
 									
 									});
 								});
