@@ -3246,7 +3246,49 @@ function showInput(elem,noedit=false,inputid=false)
 return myinput;
 }
 
-
+function showUsernameSearch(elem,resultDiv)
+{
+	var inp=$("<input type='text' autocomplete='off' class='form-control' placeholder='' name='name' >");
+				elem.append(inp);
+					inp.keydown({inny:inp},function(event)
+					{
+						try{
+							setTimeout(function(){
+							console.log("changed text input"+event.data.inny.val());
+								getSearchedUsernames(event.data.inny.val()).then(values=>{
+								
+								console.log("promise resolved");
+								console.log(JSON.stringify(values));
+				
+								var cityarr=[];
+									for (myiter in values)
+									{
+									cityarr.push(values[myiter].city);
+									}
+										
+								resultSpan.empty();
+								var citysel=showSelect(resultDiv,cityarr,cityarr,"matched users")
+									citysel.change(function(){
+											
+									console.log(JSON.parse(citysel.val()));	
+									
+									});
+								});
+							
+							},70);
+						}
+					
+						catch(err)
+						{
+						io.socket.post("/recenterror",{msg:err.message,line:err.lineNumber,thefile:err.fileName},function(res1,res2)
+						{});
+						}
+						finally {
+						}
+					});
+				}
+	
+}
 
 function showGenericTextwithInput(elem,words,elemTochange,localRecord,updatefunc,recordID)
 {

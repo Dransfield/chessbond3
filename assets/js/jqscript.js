@@ -973,9 +973,8 @@ function setupProfilePage()
 										var leftcol=addFlexDiv(leftright,"leftcol","column","wrap");
 										leftcol.css("width","50%");
 										
-											leftcol.append("Search for another user");
-										var searchInput=showInput(leftcol,true);
-										var searchButton=showButton(leftcol,"Search");
+										var userResultDiv=addDiv(leftcol);
+										showUsernameSearch(elem,userResultDiv);
 										
 										var nameAndBookmark=addFlexDiv(leftcol,"nameAndBookmark","row","wrap");
 									
@@ -3876,6 +3875,27 @@ function addNotificationPromises()
 				}));
 	
 }
+
+
+function getSearchedUsernames(typedQuery)
+{
+	
+		console.log("TypedCity "+TypedCity);
+	var cg = new Promise
+((resolve, reject) => {
+io.socket.get("/user",{where:{'name':{'contains':typedQuery}}},
+	function (resData,jwres){
+		//console.log(resData);
+		//console.log($scope.TypedCity);
+		
+			FoundUsers=resData;
+		resolve(resData);
+		
+		});
+		});	
+		return cg;
+	
+	}
 
 function getCities(TypedCity)
 {
