@@ -974,7 +974,7 @@ function setupProfilePage()
 										leftcol.css("width","50%");
 										
 										var userResultDiv=addDiv(leftcol);
-										showUsernameSearch(elem,userResultDiv);
+										showUsernameSearch(leftcol,userResultDiv);
 										
 										var nameAndBookmark=addFlexDiv(leftcol,"nameAndBookmark","row","wrap");
 									
