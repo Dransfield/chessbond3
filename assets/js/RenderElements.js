@@ -3261,15 +3261,20 @@ function showUsernameSearch(elem,resultDiv)
 								console.log(JSON.stringify(values));
 				
 								var cityarr=[];
+								var userNumbers=[];
+								
 									for (myiter in values)
 									{
 									cityarr.push(values[myiter].name);
+									userNumbers.push(values[myiter].id);
 									}
 										
-								resultDiv.empty();
-								var citysel=showSelect(resultDiv,cityarr,cityarr,"matched users")
+									resultDiv.empty();
+									
+								var citysel=showSelect(resultDiv,cityarr,userNumbers,"matched users")
 									citysel.change(function(){
-											
+									
+									window.location.replace("/profile/"+citysel.val());
 									console.log(citysel.val());	
 									
 									});
