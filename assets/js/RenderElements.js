@@ -3035,6 +3035,7 @@ function showLoginForm(elem)
 	});
 }
 
+
 function showChatForm(elem,chatID,msgtype,ReplyTo,intendedFor)
 {
 	

@@ -190,11 +190,23 @@
 	//sails.sockets.broadcast(GameID, 'ELOAdjustments',updated);
 		sails.sockets.broadcast('/humanvshumannew/'+GameID, 'chessgamemove',{room:GameID});
 
+	
+	//GamePlaying.id,"chesschat"
+	
+		Wallpost.create({unread:'true',replyto:"none",content:resultstring,sender:"",reciever:"",groupid:GameID,messagetype:"chesschat",intendedFor:""}).exec
+		(
+			function (err, records) 
+			{
+			sails.config.globals.sendChessChatMessage(GameID,records);
+			}
+		);
+	/*
 	Chatmessage.create({room:GameID,content:resultstring }).exec(function (err, records) {
 	sails.sockets.broadcast('/humanvshumannew/'+GameID,'message', {room:GameID,content: resultstring  });
 	
 	 
 	});
+	*/
 	});
 	
 	
@@ -208,12 +220,22 @@
 	 var resultstring=withdrawer+" withdrew from the game";
 	 Chessgame.update({id:GameID},{Result:resultstring,TurnTakerSentence:'Withdrawal'}).exec(function afterwards(err, updated){
 		sails.sockets.broadcast('/humanvshumannew/'+GameID, 'chessgamemove',{room:GameID});
-
+	
+	Wallpost.create({unread:'true',replyto:"none",content:resultstring,sender:"",reciever:"",groupid:GameID,messagetype:"chesschat",intendedFor:""}).exec
+		(
+			function (err, records) 
+			{
+			sails.config.globals.sendChessChatMessage(GameID,records);
+			}
+		);
+	
+	/*
 	Chatmessage.create({room:GameID,content:resultstring }).exec(function (err, records) {
 	sails.sockets.broadcast('/humanvshumannew/'+GameID,'message', {room:GameID,content: resultstring  });
 	
 	 
 	});
+	*/
 	});
 	};
 	
