@@ -1160,6 +1160,7 @@ function StartBlackClock()
 			
 
   			io.socket.get('/chessgame',{id:GameID},function (resData,jwres){
+			
 			console.log(JSON.stringify(resData));
 		   
 		   GamePlaying=resData;
@@ -1167,34 +1168,35 @@ function StartBlackClock()
 		  if (GamePlaying.Result)
 			{
 				
-			resultDiv.html(GamePlaying.Result);
-			resultDiv.css("padding","4px");
-			resultDiv.css("margin-left","8px");
-			withdrawButton.slideUp();
+				resultDiv.html(GamePlaying.Result);
+				resultDiv.css("padding","4px");
+				resultDiv.css("margin-left","8px");
+				withdrawButton.slideUp();
 				drawButton.slideUp();
 				resignButton.slideUp();
-			if(!GamePlaying.tournamentGame)
-			{
-				console.log("showig rematch button");
-			showRematchButton();
-			}
-			else
-			{
-			showTournamentRedirectNotice();	
-			}
-			if(GamePlaying.Result.indexOf("Result:</span><span class='redtext'>Draw</span><br>")>-1)
-			{PlayDraw();
 				
+				if(!GamePlaying.tournamentGame)
+				{
+				console.log("showig rematch button");
+				showRematchButton();
 				}
+				else
+				{
+				showTournamentRedirectNotice();	
+				}
+				
+				if(GamePlaying.Result.indexOf("Result:</span><span class='redtext'>Draw</span><br>")>-1)
+				{PlayDraw();}
 			
 			if(GamePlaying.Result.indexOf("withdrew from the game")>-1)
-			{PlayWithdraw();
+			{
+				PlayWithdraw();
 				for (x = 0; x < 13; x++)  
 								
 				{
 					setTimeout(function(){PlayWithdraw();},x*500);
 				}				
-				}
+			}
 			StopClocks();
 			
 			}
@@ -1211,7 +1213,7 @@ function StartBlackClock()
 	
 	
 	}
-	if (gameFunctions.movesPlayerMade(GamePlaying,MyID)>0 || GamePlaying.Result!="")
+	if (gameFunctions.movesPlayerMade(GamePlaying,MyID)>0 && GamePlaying.Result=="")
 	{
 		if(!withdrawButton.hidden)
 		{
