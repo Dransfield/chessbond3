@@ -1160,7 +1160,7 @@ function StartBlackClock()
 			
 
   			io.socket.get('/chessgame',{id:GameID},function (resData,jwres){
-			//console.log(JSON.stringify(resData));
+			console.log(JSON.stringify(resData));
 		   
 		   GamePlaying=resData;
 		 
