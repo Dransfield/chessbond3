@@ -745,7 +745,7 @@ if(drawnPageOnce==false)
 				
 				
 				drawButton=showButton(withdrawDiv,"Propose Draw","KlightgreyElement KregularButton");
-			//	drawButton.hide();
+				drawButton.hide();
 				drawButton.click(gameFunctions.offerDraw);
 				
 				resignButton=showButton(withdrawDiv,"Resign","KlightgreyElement KregularButton");
