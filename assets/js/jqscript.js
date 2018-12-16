@@ -707,6 +707,7 @@ if(drawnPageOnce==false)
 					}
 				}
 				}
+				
 				bottomPlayerMarqueContainer=addDiv(boardDivDiv);
 				bottomPlayerMarque=addFlexDiv(bottomPlayerMarqueContainer,"bottomPlayerMarque","row","wrap","space-between","center");
 				bottomPlayerMarque.css("overflow","auto");
@@ -717,10 +718,10 @@ if(drawnPageOnce==false)
 				bottomPlayerMarque.append("<img style='position:relative;' src='/images/eye2.png' height='30px'>");
 				showsmallAvatar(bottomPlayerMarque,PlayerIDOnBottom);
 				showUsername(bottomPlayerMarque,PlayerIDOnBottom);
-				if (Accounts[PlayerIDOnBottom])
-				{
-				bottomPlayerMarque.append(Accounts[PlayerIDOnBottom].ELO);
-				}
+					if (Accounts[PlayerIDOnBottom])
+					{
+					bottomPlayerMarque.append(Accounts[PlayerIDOnBottom].ELO);
+					}
 				showFlag(bottomPlayerMarque,PlayerIDOnBottom);
 				
 				BottomPingDisplay=$("<p>Ping</p>");
@@ -736,6 +737,7 @@ if(drawnPageOnce==false)
 				withdrawButton.click(gameFunctions.withdraw);
 				withdrawDiv.css("padding","10px");
 				withdrawButton.hide();
+				
 				if (gameFunctions.movesPlayerMade(GamePlaying,MyID)==0 && GamePlaying.Result=="")
 				{
 				withdrawButton.show();
@@ -743,7 +745,7 @@ if(drawnPageOnce==false)
 				
 				
 				drawButton=showButton(withdrawDiv,"Propose Draw","KlightgreyElement KregularButton");
-				drawButton.hide();
+			//	drawButton.hide();
 				drawButton.click(gameFunctions.offerDraw);
 				
 				resignButton=showButton(withdrawDiv,"Resign","KlightgreyElement KregularButton");
