@@ -158,7 +158,7 @@ module.exports = {
 			{
 				
 				sails.config.globals.sendChessChatMessage(req.param('grpid'),records);
-				
+				console.log(JSON.stringify(records);
 				/*
 				console.log("message type is chesschat");
 			sails.sockets.broadcast('/humanvshumannew/'+req.param('grpid'),'WallPost', records);
