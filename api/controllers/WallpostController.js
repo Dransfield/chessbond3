@@ -156,6 +156,10 @@ module.exports = {
 			
 			if(req.param('messagetype')=="chesschat")
 			{
+				
+				sails.config.globals.sendChessChatMessage(req.param('grpid'),records);
+				
+				/*
 				console.log("message type is chesschat");
 			sails.sockets.broadcast('/humanvshumannew/'+req.param('grpid'),'WallPost', records);
 				Notification.create({reciever:req.param('grpid'),msg:"New Game Chat Message Recieved",adr:'/humanvshumannew/'+req.param('grpid')}).exec
@@ -165,6 +169,7 @@ module.exports = {
 					//sails.sockets.broadcast(records1.reciever,'notification', records1);
 					}
 				);
+					*/
 					
 			return res.ok();
 			}	

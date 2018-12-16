@@ -84,6 +84,19 @@ module.exports.globals = {
 					{time:20,extratime:10},
 					{time:30,extratime:10},
 					{time:60,extratime:10}],
+					
+					sendChessChatMessage:function(grpid,records){
+					sails.sockets.broadcast('/humanvshumannew/'+grpid,'WallPost', records);
+				Notification.create({reciever:grpid,msg:"New Game Chat Message Recieved",adr:'/humanvshumannew/'+grpid}).exec
+				(
+					function (err, records1) 
+					{
+					//sails.sockets.broadcast(records1.reciever,'notification', records1);
+					}
+				);
+			
+			},
+					
 playerIsWhite:function (player,game)
 		{
 		var imWhite=-1;
