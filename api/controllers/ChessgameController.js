@@ -228,7 +228,7 @@
 			sails.config.globals.sendChessChatMessage(GameID,records);
 			}
 		);
-	
+	clearTimeout(sails.config.globals.initialTimeouts[GameID]);
 	/*
 	Chatmessage.create({room:GameID,content:resultstring }).exec(function (err, records) {
 	sails.sockets.broadcast('/humanvshumannew/'+GameID,'message', {room:GameID,content: resultstring  });
