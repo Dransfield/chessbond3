@@ -112,6 +112,8 @@ register: function (req, res) {
 	
 	if (user1[0].name===params.name)
 		{
+			console.log("1"+user1[0].name);
+			console.log("2"+params.name);
 			return res.serverError("User with name already exists");
 			
 			}
