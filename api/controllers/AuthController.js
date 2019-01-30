@@ -110,9 +110,13 @@ register: function (req, res) {
 	if (user1[0].name.search(params.name)==0 && user1[0].email.search(params.email)==0)
 		{return res.serverError("User with name and email exists");}
 	
-	if (user1[0].name.search(params.name)==0)
-		{return res.serverError("User with name already exists");}
-		if (user1[0].email.search(params.email)==0)
+	if (user1[0].name===params.name)
+		{
+			return res.serverError("User with name already exists");
+			
+			}
+		
+		if (user1[0].email===params.email)
 		{return res.serverError("User with name exists");}
 		return res.serverError("general error");
 	}
