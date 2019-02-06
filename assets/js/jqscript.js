@@ -758,12 +758,15 @@ if(drawnPageOnce==false)
 				var resultTitle=$("<div><div class='label label-default' >Result: </div></div>");
 				sideBoard.append(resultTitle);
 				sideBoard.css("padding-left","10px");
+				
+				saveFenButton=showButton(sideBoard,"Save Fen","kgreenElement KregularButton");
+		console.log("showed save fen button");
+				saveFenButton.click(gameFunctions.saveFen);
+				
 				//resultTitle.css("padding-left","15px");
 			//sideBoard.css("overflow","auto");
 		resultDiv=addDiv(sideBoard,"resultsdiv");
-		saveFenButton=showButton(resultDiv,"Save Fen","kgreenElement KregularButton");
-		console.log("showed save fen button");
-				saveFenButton.click(gameFunctions.saveFen);
+		
          if(GamePlaying.Result)
          {resultDiv.html(GamePlaying.Result);}
          
