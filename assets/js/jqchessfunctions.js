@@ -1348,14 +1348,24 @@ currentFavicon=src;
 
 var gameFunctions=
 {
-		playerIsPlayer1:function(player,game)
+	playerIsPlayer1:function(player,game)
 		{
 			if(game.Player1==player)
 			{return true;}
 			else
 			{return false;}
 			
-			},
+		},
+		
+	saveFen:function()
+		{
+		
+		io.socket.put('/saveFen',{id:MyID,faveFen:GamePlaying.fen();},
+		function  (data){
+		toastr.success('Saved Fen');
+		});
+		},
+	 
 	 playerIsWhite:function(player,game)
 		{
 		var imWhite=-1;
@@ -1375,11 +1385,12 @@ var gameFunctions=
 		//{imWhite=false;}
 		return imWhite;
 		},
-resign:function(){
-	io.socket.post('/Resign',{gameid:GamePlaying.id,resigner:MyID},
+	resign:function()
+		{
+		io.socket.post('/Resign',{gameid:GamePlaying.id,resigner:MyID},
 
-			function (resData, jwr) {
-				console.log("accept draw res "+resData);
+		function (resData, jwr) {
+		console.log("accept draw res "+resData);
 			
 		
 			});

@@ -51,6 +51,13 @@ module.exports = {
 		});
 	
 	},
+		saveFen:function(req,res){
+		User.update({id:req.param('acc')},{faveFen:req.param('theFen')})
+		.exec(function afterwards(err,updated){
+		return res.ok();	
+		});
+	
+	},
 	UndeleteAccount:function(req,res){
 		if(req.session){
 			if(req.session.passport){

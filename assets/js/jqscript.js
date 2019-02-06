@@ -752,6 +752,8 @@ if(drawnPageOnce==false)
 				resignButton.hide();
 				resignButton.click(gameFunctions.resign);
 				
+				saveFenButton=showButton(withdrawDiv,"Save Fen","kgreenElement KregularButton");
+				saveFenButton.click(gameFunctions.saveFen);
 				
 				var resultTitle=$("<div><div class='label label-default' >Result: </div></div>");
 				sideBoard.append(resultTitle);
