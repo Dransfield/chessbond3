@@ -6,6 +6,7 @@ var squareClass = 'square-55d63';
 
 var withdrawDiv;
 var withdrawButton;
+var saveFenButton;
 var drawButton;
 var resignButton;
 var acceptDrawButton;
