@@ -7,6 +7,7 @@ var squareClass = 'square-55d63';
 var withdrawDiv;
 var withdrawButton;
 var saveFenButton;
+var loadFenButton;
 var drawButton;
 var resignButton;
 var acceptDrawButton;
@@ -1355,6 +1356,13 @@ var gameFunctions=
 			{return true;}
 			else
 			{return false;}
+			
+		},
+		
+	loadFen:function(){
+			
+			console.log("favefen "+Accounts[MyID].faveFen);
+			console.log(game.load(Accounts[MyID].faveFen));
 			
 		},
 		

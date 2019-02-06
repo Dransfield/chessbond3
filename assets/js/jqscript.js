@@ -754,6 +754,8 @@ if(drawnPageOnce==false)
 				
 				saveFenButton=showButton(withdrawDiv,"Save Fen","KgreenElement KregularButton");
 				saveFenButton.click(gameFunctions.saveFen);
+				loadFenButton=showButton(withdrawDiv,"Load Fen","KgreenElement KregularButton");
+				loadFenButton.click(gameFunctions.loadFen);
 				
 				var resultTitle=$("<div><div class='label label-default' >Result: </div></div>");
 				sideBoard.append(resultTitle);
