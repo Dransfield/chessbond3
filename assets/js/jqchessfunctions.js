@@ -80,27 +80,27 @@ var resultDiv;
  function PlayBell()
     {
 	BellSound.volume=Accounts[MyID].SoundVolume/10;
-	BellSound.play();
+	BellSound.play().catch(function() {});
 	}
 	function PlayMove()
     {
 	MoveSound.volume=Accounts[MyID].SoundVolume/10;
-	MoveSound.play();
+	MoveSound.play().catch(function() {});
 	}
 	function PlayCheckMate()
     {
 	CheckMateSound.volume=Accounts[MyID].SoundVolume/10;
-	CheckMateSound.play();
+	CheckMateSound.play().catch(function() {});
 	}
 	function PlayWithdraw()
 	{
 	WithdrawSound.volume=Accounts[MyID].SoundVolume/10;
-	WithdrawSound.play();
+	WithdrawSound.play().catch(function() {});
 	}
 	function PlayDraw()
 	{
 	DrawSound.volume=Accounts[MyID].SoundVolume/10;
-	DrawSound.play();
+	DrawSound.play().catch(function() {});
 	}
 
 
@@ -225,11 +225,11 @@ var boardThemeNames=['original','A1','A2',
 	CheckMateSound.volume=0;
 	DrawSound.volume=0;
 	WithdrawSound.volume=0;
-	BellSound.play();
-	MoveSound.play();
-	CheckMateSound.play();
-	DrawSound.play();
-	WithdrawSound.play();
+	BellSound.play().catch(function() {});
+	MoveSound.play().catch(function() {});
+	CheckMateSound.play().catch(function() {});
+	DrawSound.play().catch(function() {});
+	WithdrawSound.play().catch(function() {});
 	BellSound.pause();
 	MoveSound.pause();
 	CheckMateSound.pause();
