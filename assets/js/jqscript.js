@@ -760,6 +760,7 @@ if(drawnPageOnce==false)
 				sideBoard.css("padding-left","10px");
 				
 				saveFenButton=showButton(sideBoard,"Save Fen","kgreenElement KregularButton");
+				saveFenButton.show();
 		console.log("showed save fen button");
 				saveFenButton.click(gameFunctions.saveFen);
 				
