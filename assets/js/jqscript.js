@@ -761,7 +761,9 @@ if(drawnPageOnce==false)
 				//resultTitle.css("padding-left","15px");
 			//sideBoard.css("overflow","auto");
 		resultDiv=addDiv(sideBoard,"resultsdiv");
-		
+		saveFenButton=showButton(resultDiv,"Save Fen","kgreenElement KregularButton");
+		console.log("showed save fen button");
+				saveFenButton.click(gameFunctions.saveFen);
          if(GamePlaying.Result)
          {resultDiv.html(GamePlaying.Result);}
          
