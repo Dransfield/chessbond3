@@ -759,11 +759,7 @@ if(drawnPageOnce==false)
 				sideBoard.append(resultTitle);
 				sideBoard.css("padding-left","10px");
 				
-				saveFenButton=showButton(sideBoard,"Save Fen","kgreenElement KregularButton");
-				saveFenButton.hide();
-				saveFenButton.show();
-		console.log("showed save fen button");
-				saveFenButton.click(gameFunctions.saveFen);
+				
 				
 				//resultTitle.css("padding-left","15px");
 			//sideBoard.css("overflow","auto");

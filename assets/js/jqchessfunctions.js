@@ -1361,7 +1361,7 @@ var gameFunctions=
 	saveFen:function()
 		{
 		
-		io.socket.put('/saveFen',{id:MyID,faveFen:GamePlaying.fen()},
+		io.socket.put('/saveFen',{id:MyID,faveFen:game.fen()},
 		function  (data){
 		toastr.success('Saved Fen');
 		});
