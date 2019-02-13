@@ -55,6 +55,8 @@ module.exports = {
 			console.log("the fen is "+req.param('faveFen'));
 		User.update({id:req.param('acc')},{faveFen:req.param('faveFen')})
 		.exec(function afterwards(err,updated){
+			if(err)
+			{console.log(err);)
 		return res.ok();	
 		});
 	
