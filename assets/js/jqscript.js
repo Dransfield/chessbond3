@@ -631,9 +631,8 @@ if(drawnPageOnce==false)
 							{
 								console.log("im black");
 							
-							
-							PlayerColorOnBottom='Black';
-							PlayerColorOnTop='White';
+								PlayerColorOnBottom='Black';
+								PlayerColorOnTop='White';
 							}
 						}
 						
@@ -676,16 +675,16 @@ if(drawnPageOnce==false)
 				if(Accounts[MyID])
 				{
 				
-				for (sIter in boardSizeValues)
-				{
-					console.log("boardSizeValues[sIter] "+boardSizeValues[sIter].name);
-					
-					if (boardSizeValues[sIter].value==Accounts[MyID].BoardSize)
+					for (sIter in boardSizeValues)
 					{
+						console.log("boardSizeValues[sIter] "+boardSizeValues[sIter].name);
+					
+						if (boardSizeValues[sIter].value==Accounts[MyID].BoardSize)
+						{
 						console.log("setting bdd to "+Accounts[MyID].BoardSize);
-				//	boardDivDiv.css("width",boardSizeValues[sIter].value+"%");
-					//sideBoard.css("width",(100-boardSizeValues[sIter].value)+"%");
-					//resizeBoard(boardSizeValues[sIter].value);
+						//	boardDivDiv.css("width",boardSizeValues[sIter].value+"%");
+						//sideBoard.css("width",(100-boardSizeValues[sIter].value)+"%");
+						//resizeBoard(boardSizeValues[sIter].value);
 					
 					
 						var finalPercent=boardSizeValues[sIter].value;
