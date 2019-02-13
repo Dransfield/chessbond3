@@ -52,8 +52,8 @@ module.exports = {
 	
 	},
 		saveFen:function(req,res){
-			console.log("the fen is "+req.param('theFen'));
-		User.update({id:req.param('acc')},{faveFen:req.param('theFen')})
+			console.log("the fen is "+req.param('faveFen'));
+		User.update({id:req.param('acc')},{faveFen:req.param('faveFen')})
 		.exec(function afterwards(err,updated){
 		return res.ok();	
 		});
