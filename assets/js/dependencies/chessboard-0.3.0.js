@@ -1603,17 +1603,21 @@ var myTurn;
 		}
 		
    }
-   else
-   {
-	   
-	toastr.info("It's not your turn ");   
-   }
+   
+	else
+	{   
+	toastr.info("It's not your turn "+game.turn()); 
+	console.log("Not users turn "+game.turn());  
+	}
+   
 	}
 	else
 	{
+		
 	toastr.info("The game is over ");   
    	
 	}
+	
     if (clickedPieceColor=='w' || clickedPieceColor=='b') 
     {
 		
