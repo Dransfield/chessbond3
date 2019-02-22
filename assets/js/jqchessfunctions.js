@@ -740,12 +740,20 @@ if(pieceTaken)
 }
 updateTurnTakerLabel(game);
 //updatePlayersLabel(game);
+ var moveFrom="";
+ var moveTo="";
+
+	if(move)
+	{
+	moveFrom=move.from;
+	moveTo=move.to;	
+	}
 
 
 io.socket.put('/Chessgame/'+GamePlaying.id,{
       fen: GamePlaying.fen,
       pgn:game.pgn({max_width: 5, newline_char: '-' }),
-      lastmove:move.from+move.to,
+      lastmove:moveFrom+moveTo,
       Move:GamePlaying.Move,
 	TurnTakerSentence:GamePlaying.TurnTakerSentence,
 	  capturedWhitepieces:GamePlaying.capturedWhitepieces,
