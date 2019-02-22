@@ -715,10 +715,16 @@ function updateTurnTakerLabel(game)
 function updateStatus(game,move)
 {
 GamePlaying.fen=game.fen();
+
+if(move)
+{
 GamePlaying.lastmove=move.from+move.to;
+}
+
 GamePlaying.Move+=1;
 
-
+if(move)
+{
 var pieceTaken=game.get(move.to);
 if(pieceTaken)
 {
@@ -730,7 +736,8 @@ if(pieceTaken)
 	{GamePlaying.capturedBlackpieces+=pieceTaken.type+",";
 	}
 	
-	}
+}
+}
 updateTurnTakerLabel(game);
 //updatePlayersLabel(game);
 
