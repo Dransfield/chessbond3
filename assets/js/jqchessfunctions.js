@@ -750,7 +750,12 @@ io.socket.put('/Chessgame/'+GamePlaying.id,{
       }  
     ,function(resData,jwres)
 	{
-		game.move(move);
+		
+	if(move)
+	{
+	game.move(move);
+	
+	
 	var state="playing";
 	var descriptor="playing";
 	var gameover='false';
@@ -775,11 +780,18 @@ io.socket.put('/Chessgame/'+GamePlaying.id,{
 	if (game.in_stalemate())
 	{descriptor='stalemate';}
 	
+	}
+	
 	io.socket.put('/chessgamemove',{OverallScore:GamePlaying.OverallScore,GameState:state,GameDescriptor:descriptor,GameOver:gameover,GameID:GamePlaying.id,ColorToMove:game.turn()},function(resData,jwres)
 	{
 	
 	});
+	
+	if(move)
+	{
 	game.undo();
+	}
+	
 	}
 );
 //console.log('about to putsocket');
@@ -1155,80 +1167,83 @@ function StartBlackClock()
 			
 			
 		 io.socket.on('chessgamemove', function (data){
+			 
 		console.log("recieved chess game move"+JSON.stringify(data));
-		if (document.visibilityState=='hidden')
-				{  changeFavicon('/favicon2.ico');
+			if (document.visibilityState=='hidden')
+					{  
+					changeFavicon('/favicon2.ico');
 					}
 			
 
   			io.socket.get('/chessgame',{id:GameID},function (resData,jwres){
 			
-			console.log(JSON.stringify(resData));
-		   
-		   GamePlaying=resData;
-		 
-		  if (GamePlaying.Result)
-			{
+				  console.log(JSON.stringify(resData));
+				   
+				  GamePlaying=resData;
+				 
+				  if (GamePlaying.Result)
+					{
 				
-				resultDiv.html(GamePlaying.Result);
-				resultDiv.css("padding","4px");
-				resultDiv.css("margin-left","8px");
-				withdrawButton.slideUp();
-				drawButton.slideUp();
-				resignButton.slideUp();
+						resultDiv.html(GamePlaying.Result);
+						resultDiv.css("padding","4px");
+						resultDiv.css("margin-left","8px");
+						withdrawButton.slideUp();
+						drawButton.slideUp();
+						resignButton.slideUp();
 				
-				if(!GamePlaying.tournamentGame)
-				{
-				console.log("showig rematch button");
-				showRematchButton();
-				}
-				else
-				{
-				showTournamentRedirectNotice();	
-				}
+						if(!GamePlaying.tournamentGame)
+						{
+						console.log("showig rematch button");
+						showRematchButton();
+						}
+						else
+						{
+						showTournamentRedirectNotice();	
+						}
 				
-				if(GamePlaying.Result.indexOf("Result:</span><span class='redtext'>Draw</span><br>")>-1)
-				{PlayDraw();}
+						if(GamePlaying.Result.indexOf("Result:</span><span class='redtext'>Draw</span><br>")>-1)
+						{PlayDraw();}
+					
+						if(GamePlaying.Result.indexOf("withdrew from the game")>-1)
+						{
+							PlayWithdraw();
+							for (x = 0; x < 13; x++)  
+											
+							{
+								setTimeout(function(){PlayWithdraw();},x*500);
+							}				
+						}
+						StopClocks();
 			
-			if(GamePlaying.Result.indexOf("withdrew from the game")>-1)
-			{
-				PlayWithdraw();
-				for (x = 0; x < 13; x++)  
-								
-				{
-					setTimeout(function(){PlayWithdraw();},x*500);
-				}				
-			}
-			StopClocks();
-			
-			}
+					}
 		
-		//board1.position(gameRecordnow .fen);
-		//.if(game.load(gameRecordnow .fen)==false)
-		//{
-		//alert('couldnt load game');
-	//	}
-	//console.log("last move"+$scope.ChessGameObject.lastmove);
-	if(GamePlaying.Result=="")
-	{
-	UpdateClocks(GamePlaying.Player1TimeLeft,GamePlaying.Player2TimeLeft,GamePlaying.Player1ExtraTimeLeft,GamePlaying.Player2ExtraTimeLeft);
-	
-	
-	}
-	if (gameFunctions.movesPlayerMade(GamePlaying,MyID)>0 && GamePlaying.Result=="")
-	{
-		if(!withdrawButton.hidden)
-		{
-		withdrawButton.slideUp();
-		withdrawButton.hidden=true;	
-		} 
-		if(!drawButton.shown)
-		{
-		drawButton.slideDown();
-		resignButton.slideDown();
-		drawButton.shown=true;	
-		}
-	}
+					//board1.position(gameRecordnow .fen);
+					//.if(game.load(gameRecordnow .fen)==false)
+					//{
+					//alert('couldnt load game');
+				//	}
+				//console.log("last move"+$scope.ChessGameObject.lastmove);
+				
+				if(GamePlaying.Result=="")
+				{
+				UpdateClocks(GamePlaying.Player1TimeLeft,GamePlaying.Player2TimeLeft,GamePlaying.Player1ExtraTimeLeft,GamePlaying.Player2ExtraTimeLeft);
+				}
+				
+				if (gameFunctions.movesPlayerMade(GamePlaying,MyID)>0 && GamePlaying.Result=="")
+				{
+					if(!withdrawButton.hidden)
+					{
+					withdrawButton.slideUp();
+					withdrawButton.hidden=true;	
+					} 
+					if(!drawButton.shown)
+					{
+					drawButton.slideDown();
+					resignButton.slideDown();
+					drawButton.shown=true;	
+					}
+				}
+				
 	/*
 	if(!withdrawButton)
 	{
@@ -1238,29 +1253,55 @@ function StartBlackClock()
 	}
 	}
 	*/
-	var modified="";
-	var move;
-	if(GamePlaying.lastmove){
-	modified=(GamePlaying.lastmove.substr(0, 2) + "-" + GamePlaying.lastmove.substr(2));
-//	console.log("with -"+modified);
-	//console.log("from "+GamePlaying.lastmove.substr(0, 2)+"-to-"+GamePlaying.lastmove.substr(2, 5)+"-");
-		
-		 move =game.move({ from: GamePlaying.lastmove.substr(0, 2), to: GamePlaying.lastmove.substr(2, 5) });
-	chessmove=move;
-	//changeOverallScore(move.captured,move.color);
-	   $("#overallscore").html("<h2>Overall Score:"+GamePlaying.OverallScore+"</h2>");
-		  //showCapturedPiece(move.captured,move.color,false);
-		  showCapturedPieces();
-	}
-		if(!GamePlaying.Result)
-	{
-		StartRightClock();
-	}	
-		
+			var modified="";
+			var move;
+			
+			if(GamePlaying.lastmove)
+			{
+			modified=(GamePlaying.lastmove.substr(0, 2) + "-" + GamePlaying.lastmove.substr(2));
+		//	console.log("with -"+modified);
+			//console.log("from "+GamePlaying.lastmove.substr(0, 2)+"-to-"+GamePlaying.lastmove.substr(2, 5)+"-");
+				
+			move =game.move({ from: GamePlaying.lastmove.substr(0, 2), to: GamePlaying.lastmove.substr(2, 5) });
+			chessmove=move;
+			//changeOverallScore(move.captured,move.color);
+			   $("#overallscore").html("<h2>Overall Score:"+GamePlaying.OverallScore+"</h2>");
+				  //showCapturedPiece(move.captured,move.color,false);
+				  showCapturedPieces();
+				  board1.move(modified);
+				  
+				if(move)
+				{
+					if(move.to)
+					{
+						
+					var square=boardEl.find('.square-' + move.to);
+					var position=square .position();
+						
+
+					square=$("b[id='lastpgn']");
+					$("img[id='pgnhighlight']" ).detach();
+					square.append("<img id='pgnhighlight' style='position:absolute;height:"+square.height()+"px;' src='/images/pgnhighlight.png'>");
+								
+					}
+				}
+					  
+			}
+			
+			else
+			
+			{
+				
+			}
+
+				if(!GamePlaying.Result)
+				{
+				StartRightClock();
+				}	
+			
 			
 		if(Accounts[MyID])
 		{	
-					
 			if(Accounts[MyID].SoundEnabled=='Sound Enabled')
 			{
 			PlayMove();
@@ -1268,37 +1309,26 @@ function StartBlackClock()
 		}
 		
 	
-		board1.move(modified);
-		if(move){
-		if(move.to){
-		var square=   boardEl.find('.square-' + move.to);
 		
-		var position =square .position();
-			
-
-			 square=   $("b[id='lastpgn']");
-			$( "img[id='pgnhighlight']" ).detach();
-			  square.append("<img id='pgnhighlight' style='position:absolute;height:"+square.height()+"px;' src='/images/pgnhighlight.png'>");
-					
-		}
-		}
+		
+		
 		Moves=game.pgn().split(".");
 		
 		
 		if (game.in_stalemate())
-	{
-	toastr.success("Stalemate!");
-		
-	}
-		if (game.insufficient_material())
-	{
-		toastr.success("Insufficient material!");
-		
+		{
+		toastr.success("Stalemate!");
 		}
+		
+		if (game.insufficient_material())
+		{
+		toastr.success("Insufficient material!");
+		}
+		
 		if (game.in_threefold_repetition())
 		{
-			toastr.success("Game in threefold repetition!");
-			//console.log("Game in threefold repetition!");
+		toastr.success("Game in threefold repetition!");
+		//console.log("Game in threefold repetition!");
 		}
 		//else
 	//	{
@@ -1363,6 +1393,9 @@ var gameFunctions=
 			
 			console.log("favefen "+Accounts[MyID].faveFen);
 			console.log(game.load(Accounts[MyID].faveFen));
+			//board1.position(Accounts[MyID].faveFen);
+			updateStatus(game,null);
+			
 			
 		},
 		
